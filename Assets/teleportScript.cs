@@ -15,6 +15,8 @@ public class teleportScript : MonoBehaviour
     [SerializeField] List<GameObject> gameObjectsToActivate;
     //[SerializeField] List<GameObject> gameObjectsToDeactivate;
 
+    [SerializeField] teleportScript backTeleport;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "player")
@@ -43,7 +45,18 @@ public class teleportScript : MonoBehaviour
             
             player.transform.position = startHallAnchor.position - (thisHallAnchor.position - player.transform.position);
 
+            if(backTeleport)
+            {
+                backTeleport.assignAnchors(thisHallAnchor, startHallAnchor);
+            }
+
             lcs.ReverseLoop();
         }
+    }
+
+    public void assignAnchors(Transform start, Transform thisHall)
+    {
+        startHallAnchor = start;
+        thisHallAnchor = thisHall;
     }
 }
