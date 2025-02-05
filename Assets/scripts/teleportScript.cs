@@ -6,6 +6,7 @@ public class teleportScript : MonoBehaviour
 {
     [SerializeField] Transform startHallAnchor;
     [SerializeField] Transform thisHallAnchor;
+
     [SerializeField] GameObject player;
 
     [SerializeField] GameObject playerCamera;
@@ -13,7 +14,7 @@ public class teleportScript : MonoBehaviour
     [SerializeField] loopingCamera lcs;
 
     [SerializeField] List<GameObject> gameObjectsToActivate;
-    //[SerializeField] List<GameObject> gameObjectsToDeactivate;
+    [SerializeField] List<GameObject> gameObjectsToDeactivate;
 
     [SerializeField] teleportScript backTeleport;
 
@@ -26,23 +27,13 @@ public class teleportScript : MonoBehaviour
             foreach (GameObject go in gameObjectsToActivate)
                 go.SetActive(true);
 
-            //foreach (GameObject go in gameObjectsToDeactivate)
-            //    go.SetActive(false);
+            foreach (GameObject go in gameObjectsToDeactivate)
+                go.SetActive(false);
+
+            Vector3 hallWayCamPos = hallWayCamera.transform.position;
 
             hallWayCamera.transform.position = playerCamera.transform.position;
 
-            /*if(invert)
-            {
-                Vector3 nonWorldSpace = thisHallAnchor.position - player.transform.position;
-                Vector3 newPos = new Vector3(startHallAnchor.position.x + nonWorldSpace.x, startHallAnchor.position.y - nonWorldSpace.y, startHallAnchor.position.z - nonWorldSpace.z);
-                player.transform.position = newPos;
-
-                Vector3 newRot = player.transform.rotation.eulerAngles;
-                newRot.y += 180;
-
-                player.transform.rotation = Quaternion.Euler(newRot);
-            }*/
-            
             player.transform.position = startHallAnchor.position - (thisHallAnchor.position - player.transform.position);
 
             if(backTeleport)
@@ -59,4 +50,7 @@ public class teleportScript : MonoBehaviour
         startHallAnchor = start;
         thisHallAnchor = thisHall;
     }
+
+    public Transform getAnchor() {  return thisHallAnchor; }
+    public Transform getLoopAnchor() { return startHallAnchor; }
 }
