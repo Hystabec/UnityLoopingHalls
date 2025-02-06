@@ -5,8 +5,7 @@ using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 
 public class switchAnchorScript : MonoBehaviour
 {
-    [SerializeField] Transform LeftHallAnchor;
-    [SerializeField] Transform RightHallAnchor;
+    [SerializeField] List<Transform> anchors = new List<Transform>();
 
     [SerializeField] hallwayTriggerScript HTS;
     [SerializeField] teleportScript TPS;
@@ -15,16 +14,10 @@ public class switchAnchorScript : MonoBehaviour
     {
         if (other.gameObject.tag == "player")
         {
-            if (Random.Range(0, 2) == 0)
-            {
-                HTS.setLoopAnchor(RightHallAnchor);
-                TPS.assignAnchors(RightHallAnchor, TPS.getAnchor());
-            }
-            else
-            {
-                HTS.setLoopAnchor(LeftHallAnchor);
-                TPS.assignAnchors(LeftHallAnchor, TPS.getAnchor());
-            }
+            int ranNum = Random.Range(0, anchors.Count);
+
+            HTS.setLoopAnchor(anchors[ranNum]);
+            TPS.assignAnchors(anchors[ranNum], TPS.getAnchor());
         }
     }
 }
