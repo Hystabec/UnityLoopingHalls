@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class teleportScript : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class teleportScript : MonoBehaviour
     [SerializeField] List<GameObject> gameObjectsToDeactivate;
 
     [SerializeField] teleportScript backTeleport;
+
+    [SerializeField] UnityEvent uEvent;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -42,6 +45,8 @@ public class teleportScript : MonoBehaviour
             }
 
             lcs.ReverseLoop();
+
+            uEvent?.Invoke();
         }
     }
 
