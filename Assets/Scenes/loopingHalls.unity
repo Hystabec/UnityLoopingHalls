@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 53066613}
   - component: {fileID: 53066615}
-  - component: {fileID: 53066614}
   - component: {fileID: 53066616}
+  - component: {fileID: 53066614}
   m_Layer: 0
   m_Name: hiddenhallTrigger
   m_TagString: Untagged
@@ -201,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftHallAnchor: {fileID: 1216476504}
   RightHallAnchor: {fileID: 951311067}
+  thisHallAnchor: {fileID: 1144135612}
   HTS: {fileID: 53066614}
   TPS: {fileID: 771842552}
 --- !u!1 &79119927
@@ -2160,7 +2161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356966527}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.949, y: 0.309, z: 22.062}
+  m_LocalPosition: {x: -2.735, y: 0.309, z: 22.062}
   m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9004,8 +9005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690a1aef9f7e11943a03638e12cb4176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loopCountToSpawnMin: 9999
-  showAfterPassingMax: 1
+  loopCountToSpawnMin: 0
+  showAfterPassingMax: 0
   loopCountToSpawnMax: 3
 --- !u!64 &1653802952
 MeshCollider:
