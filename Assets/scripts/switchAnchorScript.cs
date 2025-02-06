@@ -7,7 +7,6 @@ public class switchAnchorScript : MonoBehaviour
 {
     [SerializeField] Transform LeftHallAnchor;
     [SerializeField] Transform RightHallAnchor;
-    [SerializeField] Transform thisHallAnchor;
 
     [SerializeField] hallwayTriggerScript HTS;
     [SerializeField] teleportScript TPS;
@@ -19,12 +18,12 @@ public class switchAnchorScript : MonoBehaviour
             if (Random.Range(0, 2) == 0)
             {
                 HTS.setLoopAnchor(RightHallAnchor);
-                TPS.assignAnchors(RightHallAnchor, thisHallAnchor);
+                TPS.assignAnchors(RightHallAnchor, TPS.getAnchor());
             }
             else
             {
                 HTS.setLoopAnchor(LeftHallAnchor);
-                TPS.assignAnchors(LeftHallAnchor, thisHallAnchor);
+                TPS.assignAnchors(LeftHallAnchor, TPS.getAnchor());
             }
         }
     }
